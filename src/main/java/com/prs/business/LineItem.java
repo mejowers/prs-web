@@ -18,18 +18,18 @@ public class LineItem {
 	@ManyToOne
 	@JoinColumn(name="ProductID")
 	private Product product;
-	private int qty;
+	private int quantity;
 	
 	public LineItem() {
 		super();
 	}
 
-	public LineItem(int id, Request request, Product product, int qty) {
+	public LineItem(int id, Request request, Product product, int quantity) {
 		super();
 		this.id = id;
 		this.request = request;
 		this.product = product;
-		this.qty = qty;
+		this.quantity = quantity;
 	}
 
 	/**
@@ -75,22 +75,22 @@ public class LineItem {
 	}
 
 	/**
-	 * @return the qty
+	 * @return the quantity
 	 */
-	public int getQty() {
-		return qty;
+	public int getQuantity() {
+		return quantity;
 	}
 
 	/**
-	 * @param qty the qty to set
+	 * @param quantity the quantity to set
 	 */
-	public void setQty(int qty) {
-		this.qty = qty;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	@Override
 	public String toString() {
-		return "LineItem [id=" + id + ", request=" + request + ", product=" + product + ", qty=" + qty + "]";
+		return "LineItem [id=" + id + ", request=" + request + ", product=" + product + ", quantity=" + quantity + "]";
 	}
 	
 	

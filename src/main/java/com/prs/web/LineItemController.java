@@ -8,62 +8,55 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.prs.business.Request;
-import com.prs.db.RequestRepo;
+import com.prs.business.LineItem;
+import com.prs.db.LineItemRepo;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/requests")
+@RequestMapping("/api/lineitems")
 
 public class LineItemController {
 	
 	@Autowired
-	private RequestRepo requestRepo;
+	private LineItemRepo lineItemRepo;
 	
 	@GetMapping("/")
-	public Iterable<Request> getAll() {
-		return requestRepo.findAll();
+	public Iterable<LineItem> getAll() {
+		return lineItemRepo.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Request> get(@PathVariable int id) {
-		return requestRepo.findById(id);
+	public Optional<LineItem> get(@PathVariable int id) {
+		return lineItemRepo.findById(id);
 	}
 	
 	@PostMapping("/")
-	public Request add(@RequestBody Request request) {
-		return requestRepo.save(request);
+	public LineItem add(@RequestBody LineItem lineItem) {
+		return lineItemRepo.save(lineItem);
 	}
 	
 	@PutMapping("/")
-	public Request update(@RequestBody Request request) {
-		return requestRepo.save(request);
+	public LineItem update(@RequestBody LineItem lineItem) {
+		return lineItemRepo.save(lineItem);
 	}
 	
 	@DeleteMapping("/{id}")
-	public Optional<Request> delete(@PathVariable int id) {
-		Optional<Request> request = requestRepo.findById(id);
-		if (request.isPresent()) {
+	public Optional<LineItem> delete(@PathVariable int id) {
+		Optional<LineItem> lineItem = lineItemRepo.findById(id);
+		if (lineItem.isPresent()) {
 			try {
-		requestRepo.deleteById(id);
-			}
-			catch (DataIntegrityViolationException dive) {
-				//catch dive when request exists as fk on another table
-				System.err.println(dive.getRootCause().getMessage());
-				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-						"Foreign Key Constraint Issue - Request id: "+id+" "
-								+ "is referred to elsewhere");
+		lineItemRepo.deleteById(id);
 			}
 			catch (Exception e) {
 				e.printStackTrace();
 				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-						"Exception caught during request delete.");
+						"Exception caught during LineItem delete.");
 			}
 	}
 		else {
-			System.err.println("Request delete error - no request found for id:"+id);
+			System.err.println("LineItem delete error - no lineItem found for id:"+id);
 		}
-		return request;
+		return lineItem;
 }
 }
 
