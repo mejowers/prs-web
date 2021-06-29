@@ -10,15 +10,18 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.prs.business.LineItem;
 import com.prs.db.LineItemRepo;
+import com.prs.db.RequestRepo;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/lineitems")
+@RequestMapping("/api/line-items")
 
 public class LineItemController {
 	
 	@Autowired
 	private LineItemRepo lineItemRepo;
+	@Autowired
+	private RequestRepo requestRepo;
 	
 	@GetMapping("/")
 	public Iterable<LineItem> getAll() {
@@ -58,5 +61,9 @@ public class LineItemController {
 		}
 		return lineItem;
 }
+	@GetMapping("/lines-for-pr/{id}")
+	public Iterable<LineItem> getAllByRequest(@PathVariable int id) {
+		return lineItemRepo.findAllByRequestId(id);
+	}
 }
 

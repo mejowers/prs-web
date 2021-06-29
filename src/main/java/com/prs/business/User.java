@@ -7,7 +7,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String userName;
+	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -20,11 +20,11 @@ public class User {
 		super();
 	}
 
-	public User(int id, String userName, String password, String firstName, String lastName, String phone, String email,
+	public User(int id, String username, String password, String firstName, String lastName, String phone, String email,
 			boolean reviewer, boolean admin) {
 		super();
 		this.id = id;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -33,10 +33,10 @@ public class User {
 		this.reviewer = reviewer;
 		this.admin = admin;
 	}
-	public User(String userName, String password, String firstName, String lastName,
+	public User(String username, String password, String firstName, String lastName,
 			String phone, String email,	boolean reviewer, boolean admin) {
 		super();
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -63,15 +63,15 @@ public class User {
 	/**
 	 * @return the password
 	 */
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
 	/**
 	 * @param password the password to set
 	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User id: "+ id + "\n" +
-	           "Username: " + userName + ", Password: " + password + "\n" +
+	           "Username: " + username + ", Password: " + password + "\n" +
 			   "Name: " + firstName + " "+ lastName+ "\n"+
 	           "Phone: "+ phone +", Email: "+ email + "\n"+
 	           "Reviewer: " + reviewer +", Admin: " +admin +"\n";
