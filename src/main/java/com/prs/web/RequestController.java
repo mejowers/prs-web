@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.prs.business.Request;
+import com.prs.business.User;
 import com.prs.db.RequestRepo;
+import com.prs.db.UserRepo;
 
 @CrossOrigin
 @RestController
@@ -20,6 +22,8 @@ public class RequestController {
 	
 	@Autowired
 	private RequestRepo requestRepo;
+	@Autowired
+	private UserRepo userRepo;
 	
 	@GetMapping("/")
 	public Iterable<Request> getAll() {
@@ -69,5 +73,22 @@ public class RequestController {
 		}
 		return request;
 }
+	
+	@PutMapping("/submit-review")
+	public Request updateStatus(@RequestBody Request request) {
+		if (request.getTotal() <= 50.0) {
+			request.setStatus("Approved");
+		}else {
+			request.setStatus("Review");
+		}
+		return requestRepo.save(request);
+	}
+	
+//	@PutMapping("/list-review/{id}")
+//	public Iterable<Request> getRequestbyStatusAndUserId(@PathVariable String status, int id) {
+//		if (status == "review" && User.user != id) {
+//		
+//		}
+//	}
 }
 
