@@ -84,11 +84,27 @@ public class RequestController {
 		return requestRepo.save(request);
 	}
 	
-//	@PutMapping("/list-review/{id}")
-//	public Iterable<Request> getRequestbyStatusAndUserId(@PathVariable String status, int id) {
-//		if (status == "review" && User.user != id) {
-//		
-//		}
-//	}
+	@GetMapping("/list-review/{id}") 
+	public List<Request> getAllByStatusAndUserIdNot(@PathVariable int id) {
+		return requestRepo.findAllByStatusAndUserIdNot("Review", id);
+	}
+	
+	@PutMapping("/approve")
+	public Request approveRequest(@RequestBody Request request) {
+		request.setStatus("Approve");
+		return requestRepo.save(request);
+	}
+	
+	@PutMapping("/reject")
+	public Request rejectRequest(@RequestBody Request request) {
+		request.setStatus("Reject");
+		return requestRepo.save(request);
+	}
+
+
 }
+	
+	
+
+
 
