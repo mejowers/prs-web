@@ -41,7 +41,7 @@ public class LineItemController {
 		if (recalculateTotalValue(lineItem.getRequest())) {
 		} else {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-					"Exception caught during movieCollection post.");
+					"Exception caught during Line Item post.");
 		}
 		return li;
 	}
@@ -52,7 +52,7 @@ public class LineItemController {
 		if (recalculateTotalValue(lineItem.getRequest())) {
 		} else {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-					"Exception caught during movieCollection post.");
+					"Exception caught during Line Item post.");
 		}
 		return li;
 	}
