@@ -91,13 +91,13 @@ public class RequestController {
 	
 	@PutMapping("/approve")
 	public Request approveRequest(@RequestBody Request request) {
-		request.setStatus("Approve");
+		request.setStatus("Approved");
 		return requestRepo.save(request);
 	}
 	
 	@PutMapping("/reject")
 	public Request rejectRequest(@RequestBody Request request) {
-		request.setStatus("Reject");
+		request.setStatus("Rejected");
 		return requestRepo.save(request);
 	}
 
