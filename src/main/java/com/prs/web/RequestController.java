@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.prs.business.Request;
-import com.prs.business.User;
 import com.prs.db.RequestRepo;
 import com.prs.db.UserRepo;
 
