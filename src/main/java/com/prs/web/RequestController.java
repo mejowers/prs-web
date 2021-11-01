@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.prs.business.Request;
 import com.prs.db.RequestRepo;
-import com.prs.db.UserRepo;
+
 
 @CrossOrigin
 @RestController
@@ -21,8 +21,7 @@ public class RequestController {
 	
 	@Autowired
 	private RequestRepo requestRepo;
-	@Autowired
-	private UserRepo userRepo;
+	
 	
 	@GetMapping("/")
 	public Iterable<Request> getAll() {
